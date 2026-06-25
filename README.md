@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A modern, clean personal portfolio website built using HTML, CSS, and vanilla JavaScript.
+A modern, clean personal portfolio website built using HTML, CSS, and vanilla JavaScript, I made it using an AI agent called Hermes.
 
 https://my-portfolio-r6yy.onrender.com
 
