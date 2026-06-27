@@ -1,5 +1,33 @@
 // DOM Elements
+const navbar = document.getElementById('navbar');
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuIconOpen = document.getElementById('menuIconOpen');
+const menuIconClose = document.getElementById('menuIconClose');
 const contactForm = document.getElementById('contactForm');
+const navLinksAll = document.querySelectorAll('.nav-link');
+
+// Mobile Menu Toggle
+menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('open');
+    if (isOpen) {
+        mobileMenu.classList.remove('open');
+        menuIconOpen.style.display = '';
+        menuIconClose.style.display = 'none';
+    } else {
+        mobileMenu.classList.add('open');
+        menuIconOpen.style.display = 'none';
+        menuIconClose.style.display = '';
+    }
+});
+
+navLinksAll.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuIconOpen.style.display = '';
+        menuIconClose.style.display = 'none';
+    });
+});
 
 // Smooth Scroll for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -9,8 +37,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (targetId.length > 1) {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                const navHeight = navbar.offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
                 window.scrollTo({
-                    top: targetElement.offsetTop - 70,
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
             }
@@ -23,30 +53,21 @@ if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form data
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
         
-        // Basic validation
         if (name && email && message) {
-            // Simulate form submission
             const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
+            const originalText = submitBtn.innerHTML;
             
-            submitBtn.textContent = 'Sending...';
+            submitBtn.innerHTML = 'Sending...';
             submitBtn.disabled = true;
             
-            // Simulate API call with setTimeout
             setTimeout(() => {
-                // Reset form
                 contactForm.reset();
-                
-                // Show success message
                 alert(`Thank you, ${name}! Your message has been sent successfully. I'll get back to you at ${email} soon.`);
-                
-                // Reset button
-                submitBtn.textContent = originalText;
+                submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
             }, 1500);
         } else {
@@ -55,66 +76,46 @@ if (contactForm) {
     });
 }
 
-// Scroll Animation for Elements
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
+// Scroll Reveal for Elements
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('visible');
         }
     });
-}, observerOptions);
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-// Observe elements that should animate on scroll
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.project-card');
-    
-    animatedElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
-        element.style.transition = 'all 0.6s ease-out';
-        observer.observe(element);
-    });
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => revealObserver.observe(el));
 });
 
 // Sticky Navbar Effect
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
-
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.style.boxShadow = 'var(--shadow)';
+    if (window.scrollY > 32) {
+        navbar.classList.add('scrolled');
     } else {
-        navbar.style.boxShadow = 'none';
+        navbar.classList.remove('scrolled');
     }
-    
-    lastScroll = currentScroll;
 });
 
 // Active Navigation Link on Scroll
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-links a');
+const desktopNavLinks = document.querySelectorAll('#navLinks .nav-link');
 
 window.addEventListener('scroll', () => {
     let current = '';
+    const navHeight = navbar.offsetHeight;
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 100) {
+        const sectionTop = section.offsetTop - navHeight - 60;
+        if (window.scrollY >= sectionTop) {
             current = section.getAttribute('id');
         }
     });
     
-    navLinks.forEach(link => {
+    desktopNavLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
+        if (link.getAttribute('href') === '#' + current) {
             link.classList.add('active');
         }
     });
@@ -122,4 +123,3 @@ window.addEventListener('scroll', () => {
 
 // Console Log for Development
 console.log('Portfolio website loaded successfully!');
-console.log('Feel free to customize this template with your own content and styling.');

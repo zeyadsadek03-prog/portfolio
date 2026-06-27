@@ -8,27 +8,59 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="container">
             <div class="logo">Zeyad Sadek</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire me</button></li>
             </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <svg id="menuIconOpen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="6" x2="20" y2="6" />
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
+                <svg id="menuIconClose" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#hero" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Hire me</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="container">
-            <h1 class="hero-title">Hello, I'm <span class="highlight">Zeyad Sadek</span></h1>
+            <div class="hero-eyebrow">
+                <span class="line"></span>
+                <span>Web Developer</span>
+            </div>
+            <h1 class="hero-title">
+                Hello, I'm <span class="highlight">Zeyad Sadek<span class="underline"><svg viewBox="0 0 320 8" fill="none" preserveAspectRatio="none" style="position:absolute;left:0;bottom:-4px;width:100%;height:6px;opacity:0.5;"><path d="M2 4 C 60 1, 140 7, 200 4 C 260 1, 300 5, 318 3.5" stroke="#4338CA" stroke-width="2" stroke-linecap="round"/></svg></span></span>
+            </h1>
             <p class="hero-subtitle">Web Developer | Designer | Creator</p>
             <p class="hero-description">Building digital experiences that combine aesthetics with functionality.</p>
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                <a href="#projects" class="btn btn-primary">
+                    View my work
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="#contact" class="btn btn-secondary">Get in touch</a>
+            </div>
+            <div class="scroll-indicator">
+                <div class="line"></div>
+                <span>Scroll to explore</span>
             </div>
         </div>
     </section>
@@ -36,23 +68,28 @@
     <!-- About Section -->
     <section id="about" class="section about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <p class="about-text">
-                    I'm a passionate developer and student at Bartın University. 
-                    I specialize in building responsive, user-friendly websites and applications 
-                    that solve real problems. With a strong foundation in HTML, CSS, and JavaScript,
-                    I'm always learning and growing as a developer.
-                </p>
-                <div class="skills">
-                    <h3>My Skills:</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">UI/UX Design</span>
+            <div class="section-label"><span>02 — About</span></div>
+            <div class="about-grid">
+                <div>
+                    <h2 class="section-title">Engineer by trade, <em>designer at heart.</em></h2>
+                </div>
+                <div>
+                    <p class="about-text">
+                        I'm a passionate developer and student at Bartın University. I'm always learning and growing as a developer.
+                    </p>
+                    <p class="about-text">
+                        I specialize in building responsive, user-friendly websites and applications that solve real problems. With a strong foundation in HTML, CSS, and JavaScript, I'm always learning and growing as a developer.
+                    </p>
+                    <div class="skills">
+                        <h3>My Skills:</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">UI/UX Design</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,9 +99,13 @@
     <!-- Projects Section -->
     <section id="projects" class="section projects">
         <div class="container">
-            <h2 class="section-title">My Projects</h2>
+            <div class="section-label"><span>03 — Selected Work</span></div>
+            <div class="projects-header">
+                <h2 class="section-title">Projects I'm <em>proud to ship.</em></h2>
+                <p>A curated selection of recent client and open-source work across industries.</p>
+            </div>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card reveal">
                     <div class="project-image">
                         <div class="project-placeholder"></div>
                     </div>
@@ -72,43 +113,35 @@
                         <h3>Project One</h3>
                         <p class="project-description">A modern e-commerce platform with cart functionality and payment integration.</p>
                         <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
                         </div>
-                        <a href="#" class="project-link">View Project</a>
+                        <a href="#" class="project-link">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                     </div>
                 </div>
-                
-                <div class="project-card">
+                <div class="project-card reveal">
                     <div class="project-image">
-                        <div class="project-placeholder"></div>
+                        <div class="project-placeholder" style="background:linear-gradient(135deg, #6366f1 0%, #a5b4fc 100%)"></div>
                     </div>
                     <div class="project-info">
                         <h3>Project Two</h3>
                         <p class="project-description">A productivity dashboard for managing tasks and tracking goals.</p>
                         <div class="project-tech">
-                            <span>React</span>
-                            <span>CSS Modules</span>
-                            <span>API Integration</span>
+                            <span>React</span><span>CSS Modules</span><span>API Integration</span>
                         </div>
-                        <a href="#" class="project-link">View Project</a>
+                        <a href="#" class="project-link">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                     </div>
                 </div>
-                
-                <div class="project-card">
+                <div class="project-card reveal">
                     <div class="project-image">
-                        <div class="project-placeholder"></div>
+                        <div class="project-placeholder" style="background:linear-gradient(135deg, #0ea5e9 0%, #7dd3fc 100%)"></div>
                     </div>
                     <div class="project-info">
                         <h3>Project Three</h3>
                         <p class="project-description">A portfolio website builder with customizable templates.</p>
                         <div class="project-tech">
-                            <span>Node.js</span>
-                            <span>Express</span>
-                            <span>MongoDB</span>
+                            <span>Node.js</span><span>Express</span><span>MongoDB</span>
                         </div>
-                        <a href="#" class="project-link">View Project</a>
+                        <a href="#" class="project-link">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -118,11 +151,11 @@
     <!-- Contact Section -->
     <section id="contact" class="section contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
+            <div class="section-label"><span>04 — Contact</span></div>
+            <h2 class="section-title">Let's build something <em>remarkable.</em></h2>
+            <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Let's talk about your project</h3>
-                    <p>Fill out the form and I'll get back to you within 24 hours.</p>
+                    <p>Currently available for select freelance projects and consulting engagements. Response time is typically under 24 hours.</p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <span class="icon">✉️</span>
@@ -137,19 +170,33 @@
                             <span>Bartın, Merkez, Turkey</span>
                         </div>
                     </div>
+                    <div class="contact-divider"></div>
+                    <div class="availability">
+                        <span class="dot"></span>
+                        <span>Available for new projects</span>
+                    </div>
                 </div>
-                
                 <form id="contactForm" class="contact-form">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" value="Zeyad Sadek" required>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" value="Zeyad Sadek" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" value="zezopreak123@gmail.com" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@company.com" value="zezopreak123@gmail.com" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Project overview" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell me about the project, timeline, and budget..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">
+                        Send message
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
                 </form>
             </div>
         </div>
@@ -158,12 +205,13 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Zeyad Sadek. All rights reserved.</p>
+            <div class="footer-logo">Zeyad Sadek</div>
             <div class="social-links">
-                <a href="#" aria-label="GitHub">GitHub</a>
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="GitHub">GH</a>
+                <a href="#" aria-label="LinkedIn">LI</a>
+                <a href="#" aria-label="Twitter">TW</a>
             </div>
+            <p class="footer-copy">© 2026 Zeyad Sadek. All rights reserved.</p>
         </div>
     </footer>
 
