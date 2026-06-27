@@ -456,6 +456,7 @@ body {
 }
 
 .project-image {
+    position: relative;
     width: 100%;
     height: 200px;
     overflow: hidden;
@@ -743,4 +744,64 @@ body {
 .nav-links a.active {
     color: var(--foreground);
     font-weight: 600;
+}
+
+/* Mini mock UI inside Study Buddy project card */
+.mock-ui {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    color: #fff;
+}
+
+.mock-bar {
+    height: 22px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.25);
+    margin-bottom: 18px;
+}
+
+.mock-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mock-q {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    opacity: 0.95;
+}
+
+.mock-opts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mock-opt {
+    height: 14px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.mock-opt.correct {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.mock-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mock-btn.check {
+    width: 48px;
+    height: 18px;
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.85);
 }
